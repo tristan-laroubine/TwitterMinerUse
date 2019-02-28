@@ -53,4 +53,33 @@ public final class Main {
 
         }
     }
+    public static Map<Integer,String> transformMap() throws IOException {
+        int index=-1;
+        Map<Integer,String> myMap = new HashMap<Integer, String>();
+
+        String strLine="";
+        String splitStr=";";
+
+        try (FileReader fstream = new FileReader("donne.txt")){
+            BufferedReader br = new BufferedReader(fstream);
+            while ((strLine = br.readLine()) != null)   {
+                String[] tweet= strLine.split(splitStr);
+                for (int i = 1; i < tweet.length - 1 ; i++) {
+                    if (!(isOnMap(tweet[i],myMap))){
+                        myMap.put(++index,tweet[i]);
+                    }
+                }
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return myMap;
+    }
+    public static boolean isOnMap(String elem, Map<Integer, String> myMap){
+        for (Integer key: myMap.keySet()) {
+            if (elem.equals(myMap.get(key)))return true;
+        }
+        return false;
+    }
 }
