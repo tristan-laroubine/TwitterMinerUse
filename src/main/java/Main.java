@@ -17,50 +17,8 @@ public final class Main {
      *
      * @param args message
      */
-    public static void main(String[] args) throws TwitterException, FileNotFoundException, UnsupportedEncodingException {
-        // The factory instance is re-useable and thread safe.
-        Twitter twitter = TwitterFactory.getSingleton();
-        Query query = new Query("#GiletsJaunes");
-        int numberOfTweets = 10;
-        long lastID = Long.MAX_VALUE;
-        ArrayList<Status> tweets = new ArrayList<Status>();
-        while (tweets.size () < numberOfTweets) {
-            if (numberOfTweets - tweets.size() > 100)
-                query.setCount(100);
-            else
-                query.setCount(numberOfTweets - tweets.size());
-            try {
-                QueryResult result = twitter.search(query);
-                tweets.addAll(result.getTweets());
-                println("Gathered " + tweets.size() + " tweets");
-                for (Status t: tweets)
-                    if(t.getId() < lastID) lastID = t.getId();
-
-            }
-
-            catch (TwitterException te) {
-                println("Couldn't connect: " + te);
-            };
-            query.setMaxId(lastID-1);
-        }
-
-
-
-
-
-
-
-
-
-        System.out.println("Showing home timeline.");
-
-        PrintWriter writer = new PrintWriter("donne.txt", "UTF-8");
-
-
-        for (Status status : tweets) {
-            writer.println("\""+status.getCreatedAt()+"\";\""+status.getGeoLocation()+"\";\"@"+status.getUser().getScreenName()+"\";" + magicCutTextFonction(status.getText()));
-        }
-        writer.close();
+    public static void main(String[] args) throws FileNotFoundException, TwitterException {
+//       getTweetInBD("#GiletsJaunes","output.txt",10000);
 
     }
 
@@ -71,5 +29,28 @@ public final class Main {
         result = result +         text.replace(" ", "\";\"");
         result = result + "\";";
         return result;
+    }
+
+    public static void getTweetInBD(String arg, String fileDirectory, int nbMaxTweet) throws FileNotFoundException, TwitterException {
+        Twitter twitter = TwitterFactory.getSingleton();
+        Query query = new Query(arg);
+        query.setCount(100);
+        int nombreTweet = 0;
+        PrintStream ps = new PrintStream(new FileOutputStream(fileDirectory));
+        while(nbMaxTweet<nombreTweet)
+        {
+            QueryResult result = twitter.search(query);
+
+
+            for (Status status : result.getTweets()) {
+                ps.println("\""+status.getCreatedAt()+"\";\"@"+status.getUser().getScreenName()+"\";" + magicCutTextFonction(status.getText()));
+            }
+            query = result.nextQuery();
+
+            nombreTweet = nombreTweet + 100;
+            System.out.println("Nombre de tweet => " + nombreTweet);
+
+
+        }
     }
 }
