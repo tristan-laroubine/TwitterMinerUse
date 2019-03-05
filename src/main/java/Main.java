@@ -17,14 +17,10 @@ public final class Main {
      * @param args message
      */
     public static void main(String[] args) throws IOException, TwitterException {
-//       getTweetInBD("#GiletsJaunes","output.txt",500);
-//         createNumberData("output.txt","outputResult.txt");
-        String test = "Jean marche dans la montagne";
+//       getTweetInBD("#GoT","GoTTweet.txt",15000);
+//         createNumberData("GoTTweet.txt","GoTTweetResult.txt");
 
-        String[] parts = test.split(" ");
-        for (String str : parts){
-            System.out.println(str);
-        }
+
 
 
     }
@@ -35,6 +31,11 @@ public final class Main {
         InputStreamReader lecture=new InputStreamReader(flux);
         BufferedReader buff=new BufferedReader(lecture);
         String ligne;
+        PrintStream ps = new PrintStream(new FileOutputStream(output));
+
+        Map<String, Integer> MapConvert = new HashMap<>();
+
+        System.out.println(MapConvert.size());
         while ((ligne=buff.readLine())!=null){
             ligne = ligne.substring(32, ligne.length());
             ligne = ligne.replace("\";\""," ");
@@ -48,10 +49,18 @@ public final class Main {
             ligne = ligne.replace("\'","");
             ligne = ligne.toLowerCase();
 
+            String newLine = "";
 
-
-            System.out.println(ligne);
+            String[] parts = ligne.split(" ");
+            for (String str : parts){
+                if(!MapConvert.containsKey(str)){
+                    MapConvert.put(str,MapConvert.size());
+                }
+                newLine = newLine + " " + MapConvert.get(str);
+            }
+            ps.println(newLine);
         }
+        System.out.println(MapConvert.size());
         buff.close();
     }
 
