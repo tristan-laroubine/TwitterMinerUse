@@ -2,7 +2,9 @@
 
 import twitter4j.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static java.sql.DriverManager.println;
@@ -14,9 +16,43 @@ public final class Main {
      *
      * @param args message
      */
-    public static void main(String[] args) throws FileNotFoundException, TwitterException {
-       getTweetInBD("#GiletsJaunes","output.txt",10000);
+    public static void main(String[] args) throws IOException, TwitterException {
+//       getTweetInBD("#GiletsJaunes","output.txt",500);
+//         createNumberData("output.txt","outputResult.txt");
+        String test = "Jean marche dans la montagne";
 
+        String[] parts = test.split(" ");
+        for (String str : parts){
+            System.out.println(str);
+        }
+
+
+    }
+
+    private static void createNumberData(String input, String output) throws IOException {
+
+        InputStream flux=new FileInputStream(input);
+        InputStreamReader lecture=new InputStreamReader(flux);
+        BufferedReader buff=new BufferedReader(lecture);
+        String ligne;
+        while ((ligne=buff.readLine())!=null){
+            ligne = ligne.substring(32, ligne.length());
+            ligne = ligne.replace("\";\""," ");
+            ligne = ligne.replace(","," ");
+            ligne = ligne.replace("\";"," ");
+
+            ligne = ligne.replace(","," ");
+            ligne = ligne.replace("."," ");
+            ligne = ligne.replace(":"," ");
+            ligne = ligne.replace("\""," ");
+            ligne = ligne.replace("\'","");
+            ligne = ligne.toLowerCase();
+
+
+
+            System.out.println(ligne);
+        }
+        buff.close();
     }
 
     public static String magicCutTextFonction(String text)
