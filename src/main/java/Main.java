@@ -62,8 +62,46 @@ public final class Main {
         }
         System.out.println(MapConvert.size());
         buff.close();
+//        convertNumberToText(MapConvert,"GOTResultApriori.out","testOutputConvertNumber");
+
+
     }
 
+    public static void convertNumberToText( Map<String, Integer> mapConvert, String source, String output) throws IOException {
+        InputStream flux=new FileInputStream(source);
+        InputStreamReader lecture=new InputStreamReader(flux);
+        BufferedReader buff=new BufferedReader(lecture);
+        String ligne;
+        PrintStream ps = new PrintStream(new FileOutputStream(output));
+        while ((ligne=buff.readLine())!=null) {
+               String value = ligne.substring(ligne.indexOf('(') , ligne.indexOf(')')+1);
+               ligne = ligne.substring(0,ligne.indexOf('('));
+               String newLine ="";
+                String[] parts = ligne.split(" ");
+
+
+                for (String str : parts){
+                    str = str.replace(" ","");
+//                    System.out.println("|" + str + "|");
+                    int strtoInt = 0;
+                    if(!str.equals("")) strtoInt = Integer.parseInt(str);
+                    newLine = newLine + " " + getKey(mapConvert,strtoInt);
+                }
+                newLine = newLine + " " + value;
+            ps.println(newLine);
+
+
+        }
+        buff.close();
+    }
+    static public <K, V> K getKey(Map<K, V> map, V value) {
+        for (Map.Entry<K, V> entry : map.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
     public static String magicCutTextFonction(String text)
     {
         text = text.replace("\n","");
