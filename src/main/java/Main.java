@@ -19,11 +19,13 @@ public final class Main {
     public static void main(String[] args) throws IOException, TwitterException {
 //       getTweetInBD("#GoT","GoTTweet.txt",15000);
 //         createNumberData("GoTTweet.txt","GoTTweetResult.txt");
-
+        AprioriTraitement aprioriTraitement = new AprioriTraitement("testOutputConvertNumber.txt"); // error
 
 
 
     }
+
+
 
     private static void createNumberData(String input, String output) throws IOException {
 
