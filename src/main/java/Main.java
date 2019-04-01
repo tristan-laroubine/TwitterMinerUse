@@ -19,55 +19,16 @@ public final class Main {
     public static void main(String[] args) throws IOException, TwitterException {
 //       getTweetInBD("#GoT","GoTTweet.txt",15000);
 //         createNumberData("GoTTweet.txt","GoTTweetResult.txt");
-        AprioriTraitement aprioriTraitement = new AprioriTraitement("testOutputConvertNumber.txt"); // error
+        AprioriTraitement aprioriTraitement = new AprioriTraitement("GOTResultApriori.out", "RegleAssosiationOutPut.txt", 0.20);
 
-
-
-    }
-
-
-
-    private static void createNumberData(String input, String output) throws IOException {
-
-        InputStream flux=new FileInputStream(input);
-        InputStreamReader lecture=new InputStreamReader(flux);
-        BufferedReader buff=new BufferedReader(lecture);
-        String ligne;
-        PrintStream ps = new PrintStream(new FileOutputStream(output));
-
-        Map<String, Integer> MapConvert = new HashMap<>();
-
-        System.out.println(MapConvert.size());
-        while ((ligne=buff.readLine())!=null){
-            ligne = ligne.substring(32, ligne.length());
-            ligne = ligne.replace("\";\""," ");
-            ligne = ligne.replace(","," ");
-            ligne = ligne.replace("\";"," ");
-
-            ligne = ligne.replace(","," ");
-            ligne = ligne.replace("."," ");
-            ligne = ligne.replace(":"," ");
-            ligne = ligne.replace("\""," ");
-            ligne = ligne.replace("\'","");
-            ligne = ligne.toLowerCase();
-
-            String newLine = "";
-
-            String[] parts = ligne.split(" ");
-            for (String str : parts){
-                if(!MapConvert.containsKey(str)){
-                    MapConvert.put(str,MapConvert.size());
-                }
-                newLine = newLine + " " + MapConvert.get(str);
-            }
-            ps.println(newLine);
-        }
-        System.out.println(MapConvert.size());
-        buff.close();
-//        convertNumberToText(MapConvert,"GOTResultApriori.out","testOutputConvertNumber");
-
+        Traduction traducteur = new Traduction("GoTTweet.txt");
+//        traducteur.getInLetter("GOTResultApriori.out", "test");
+//        traducteur.getInNumber("GoTTweetResult.txt");
+//        traducteur.getInLetter("RegleAssosiationOutPut.txt","RegleAssosiationOutPut.txtOutput");
 
     }
+
+
 
     public static void convertNumberToText( Map<String, Integer> mapConvert, String source, String output) throws IOException {
         InputStream flux=new FileInputStream(source);
