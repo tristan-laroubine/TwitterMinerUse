@@ -1,14 +1,15 @@
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.lang.reflect.Array;
+import java.util.*;
 
 @SuppressWarnings("Duplicates")
 public class AprioriTraitement {
 
     private String file;
     private InputStreamReader lecture;
-    private Map<ArrayList<Integer>, Double> aprioriVect = new HashMap<>();
+
+    private List<AproriTuple> aproriTuples = new ArrayList<>();
+    private List<RegleAssociation> regleAssociations = new ArrayList<>();
     private Double confMin;
     private String output;
     private int nbLigne;
@@ -43,25 +44,41 @@ public class AprioriTraitement {
             ligne = ligne.substring(0,ligne.indexOf('('));
             String newLine ="";
             String[] parts = ligne.split(" ");
-
-
             ArrayList<Integer> vectorInt   = new ArrayList<>();
             for (String str : parts){
                 int valueStr = 0;
                 if (!str.isEmpty()) valueStr = Integer.parseInt(str);
                 vectorInt.add(valueStr);
             }
-                if (Double.valueOf(value) / (double) nbLigne >= confMin) aprioriVect.put(vectorInt, Double.valueOf(value));
+
+                aproriTuples.add(new AproriTuple(vectorInt,  Integer.valueOf(value)));
         }
         buff.close();
 
     }
 
-    void calculMinConf(){
-        for (Map.Entry<ArrayList<Integer>, Double> temp  : aprioriVect.entrySet())
-        {
-            System.out.println(temp);
-        }
+
+
+    void calculMinConf() throws FileNotFoundException {
+        Collections.sort(aproriTuples);
+        aproriTuples.remove(0);
+        PrintStream ps = new PrintStream(new FileOutputStream(output));
+      for (AproriTuple aproriTuple : aproriTuples)
+      {
+          for (AproriTuple aproriTuple1 : aproriTuples)
+          {
+              if(!aproriTuple.isContainsIn(aproriTuple1)) continue;
+              if (aproriTuple.getMyNumber() == aproriTuple1.getMyNumber()) continue;
+              if (aproriTuple.getMyNumber().size() == aproriTuple1.getMyNumber().size()) continue;
+              RegleAssociation regleAssociation = new RegleAssociation(aproriTuple, aproriTuple1, confMin);
+              if (regleAssociation.isRightRuleAssociation())
+              {
+                  regleAssociations.add(regleAssociation);
+                  ps.println(regleAssociation);
+              }
+          }
+      }
+
     }
 
 

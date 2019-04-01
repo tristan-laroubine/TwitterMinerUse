@@ -19,9 +19,11 @@ public final class Main {
     public static void main(String[] args) throws IOException, TwitterException {
 //       getTweetInBD("#GoT","GoTTweet.txt",15000);
 //         createNumberData("GoTTweet.txt","GoTTweetResult.txt");
-        AprioriTraitement aprioriTraitement = new AprioriTraitement("GOTResultApriori.out", "RegleAssosiationOutPut.txt", 0.20);
 
-        Traduction traducteur = new Traduction("GoTTweet.txt");
+//        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("GoTTweetResult.txt","AprioriGOTTweetResult.out",1000);
+        AprioriTraitement aprioriTraitement = new AprioriTraitement("GOTResultApriori.out", "RegleAssosiationOutPut.txt", 0.01  );
+
+//        Traduction traducteur = new Traduction("GoTTweet.txt");
 //        traducteur.getInLetter("GOTResultApriori.out", "test");
 //        traducteur.getInNumber("GoTTweetResult.txt");
 //        traducteur.getInLetter("RegleAssosiationOutPut.txt","RegleAssosiationOutPut.txtOutput");
