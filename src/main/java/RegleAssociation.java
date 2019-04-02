@@ -20,7 +20,7 @@ public class RegleAssociation {
 
     public boolean isRightRuleAssociation()
     {
-        if (myAfter.myOccurence / myBefore.myOccurence >= minConfiance)
+        if ((double)myAfter.myOccurence / (double) myBefore.myOccurence >= minConfiance)
         {
             return true;
         }
@@ -30,6 +30,6 @@ public class RegleAssociation {
 
     @Override
     public String toString() {
-        return myBefore.getMyNumber() + " => " + myAfter.getMyNumber() + " = " + ((double) myAfter.myOccurence / (double) myBefore.myOccurence);
+        return myBefore.getMyNumberInString() + "| " + myAfter.getMyNumberInString() + "(" + ((double) myAfter.myOccurence / (double) myBefore.myOccurence)+")";
     }
 }

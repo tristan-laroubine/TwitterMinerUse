@@ -20,10 +20,12 @@ public final class Main {
 //       getTweetInBD("#GoT","GoTTweet.txt",15000);
 //         createNumberData("GoTTweet.txt","GoTTweetResult.txt");
 
-//        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("GoTTweetResult.txt","AprioriGOTTweetResult.out",1000);
-        AprioriTraitement aprioriTraitement = new AprioriTraitement("GOTResultApriori.out", "RegleAssosiationOutPut.txt", 0.01  );
+//        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("GoTTweetResult.txt","FileAfterApriori/FileAfterApriori2",1000);
+//        AprioriTraitement aprioriTraitement = new AprioriTraitement("FileAfterApriori/FileAfterApriori2", "FileAfterRuleAssos/FileAfterRuleAssos2", 0.30);
 
-//        Traduction traducteur = new Traduction("GoTTweet.txt");
+
+        Traduction traducteur = new Traduction("GoTTweet.txt");
+        traducteur.getInLetter("FileAfterRuleAssos/FileAfterRuleAssos2", "Traduction/FileAfterRule2");
 //        traducteur.getInLetter("GOTResultApriori.out", "test");
 //        traducteur.getInNumber("GoTTweetResult.txt");
 //        traducteur.getInLetter("RegleAssosiationOutPut.txt","RegleAssosiationOutPut.txtOutput");

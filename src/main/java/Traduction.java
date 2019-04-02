@@ -62,9 +62,19 @@ public class Traduction {
             for (String str : parts){
                 str = str.replace(" ","");
 //                    System.out.println("|" + str + "|");
+
                 int strtoInt = 0;
-                if(!str.equals("")) strtoInt = Integer.parseInt(str);
-                newLine = newLine + " " + getKey(mapConvert,strtoInt);
+                if(!str.equals("") && !str.equals("|")) strtoInt = Integer.parseInt(str);
+                if(!str.equals("|"))
+                {
+                    newLine = newLine + " " + getKey(mapConvert,strtoInt);
+                }
+
+                else
+                {
+                    newLine = newLine + " " + str;
+                }
+
             }
             newLine = newLine + " " + value;
             ps.println(newLine);

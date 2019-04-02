@@ -40,4 +40,13 @@ public class AproriTuple implements Comparable<AproriTuple> {
         }
         return true;
     }
+
+    public String getMyNumberInString() {
+        String str = "";
+        for (Integer integer : this.getMyNumber())
+        {
+            str += integer + " ";
+        }
+        return str;
+    }
 }
