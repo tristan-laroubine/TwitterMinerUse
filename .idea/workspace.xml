@@ -3,19 +3,39 @@
   <component name="ChangeListManager">
     <list default="true" id="828ef9b1-88f6-4004-a678-eed7cd09298a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FileForApriori/test" beforeDir="false" afterPath="$PROJECT_DIR$/FileForApriori/test" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motsInutile.txt" beforeDir="false" afterPath="$PROJECT_DIR$/motsInutile.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AprioriCreateWithFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AprioriCreateWithFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AprioriTraitement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AprioriTraitement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AprioriGOTTweetResult.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterApriori/FileAfterApriori1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterApriori/FileAfterApriori2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterApriori/FileAfterAprioriGoTV2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterApriori/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterRuleAssos/FileAfterRuleAssoGoTV2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterRuleAssos/FileAfterRuleAssos1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterRuleAssos/FileAfterRuleAssos2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileAfterRuleAssos/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileForApriori/FileForApriori1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileForApriori/FileForAprioriGoTV2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/FileForApriori/test" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GOTResultApriori.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/GoTTweetResult.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegleAssosiationOutPut.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/RegleAssosiationOutPut.txtOutput" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traduction/FileAfterAprioriGoTV2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traduction/FileAfterLiftGoTV2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traduction/FileAfterRule1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traduction/FileAfterRule2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Traduction/FileAfterRuleGoTV2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/outputResult.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Affichage/LoadFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Affichage/LoadFile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/RegleAssociation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/RegleAssociation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Traduction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Traduction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AprioriCreateWithFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AprioriCreateWithFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/AprioriTraitement.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/AprioriTraitement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Demo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Affichage/LoadFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Affichage/LoadFile.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/RegleAssociation.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/RegleAssociation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/Traduction.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Traduction.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test1.1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/testOutputConvertNumber" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -40,17 +60,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
-              <folding>
-                <element signature="method#convertNumberToText#0;class#Main#0" />
-                <element signature="method#magicCutTextFonction#0;class#Main#0" />
-                <element signature="method#transformMap#0;class#Main#0" />
-                <element signature="method#isOnMap#0;class#Main#0" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="14" selection-start-line="14" selection-end-line="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Affichage/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Traduction/MacronAfterLiftV2">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="250">
+              <caret line="343" column="84" lean-forward="true" selection-start-line="343" selection-start-column="84" selection-end-line="343" selection-end-column="84" />
             </state>
           </provider>
         </entry>
@@ -75,6 +107,13 @@
       <find>successivement</find>
       <find>@ainoha_pascual</find>
       <find>Wed</find>
+      <find>gilet</find>
+      <find>voté macr</find>
+      <find>aurait</find>
+      <find>!!</find>
+      <find>petit</find>
+      <find>!!!</find>
+      <find>suis ma</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -103,10 +142,12 @@
         <option value="$PROJECT_DIR$/src/main/java/Traduction.java" />
         <option value="$PROJECT_DIR$/motsInutile.txt" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/Traduction/MacronAfterLiftV2" />
+        <option value="$PROJECT_DIR$/src/main/java/Affichage/LoadFile.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="85" />
     <option name="y" value="25" />
     <option name="width" value="1750" />
@@ -117,27 +158,14 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
               <item name="twitMinerV2" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitMinerV2" type="462c0819:PsiDirectoryNode" />
-              <item name="FileAfterApriori" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitMinerV2" type="462c0819:PsiDirectoryNode" />
-              <item name="FileAfterRuleAssos" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="twitMinerV2" type="462c0819:PsiDirectoryNode" />
-              <item name="FileForApriori" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
@@ -160,20 +188,26 @@
             <path>
               <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
               <item name="twitMinerV2" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="Affichage" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="twitMinerV2" type="b2602c69:ProjectViewProjectNode" />
+              <item name="twitMinerV2" type="462c0819:PsiDirectoryNode" />
               <item name="Traduction" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554307581010" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554326006907" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
@@ -193,7 +227,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Apriori" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Apriori" />
       <module name="twitMinerV2" />
@@ -208,6 +242,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Affichage.Main" />
+      <module name="twitMinerV2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Affichage.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="twitMinerV2" />
@@ -217,6 +264,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Demo" />
         <item itemvalue="Application.Apriori" />
@@ -241,17 +289,18 @@
       <workItem from="1554232902645" duration="2654000" />
       <workItem from="1554284234956" duration="6397000" />
       <workItem from="1554295736276" duration="10827000" />
+      <workItem from="1554324383066" duration="1612000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="61218000" />
+    <option name="totallyTimeSpent" value="62830000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24832214" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25167784" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24966443" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -453,13 +502,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test" />
     <entry file="file://$PROJECT_DIR$/FileForApriori/test">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -467,9 +510,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fefze">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/fefze" />
     <entry file="file://$PROJECT_DIR$/src/main/java/AprioriTraitement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -544,16 +585,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Affichage/LoadFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="24" column="34" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MacronV2.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
-          <folding>
-            <element signature="method#convertNumberToText#0;class#Main#0" />
-            <element signature="method#magicCutTextFonction#0;class#Main#0" />
-            <element signature="method#transformMap#0;class#Main#0" />
-            <element signature="method#isOnMap#0;class#Main#0" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="14" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Affichage/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Traduction/MacronAfterLiftV2">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="343" column="84" lean-forward="true" selection-start-line="343" selection-start-column="84" selection-end-line="343" selection-end-column="84" />
         </state>
       </provider>
     </entry>

@@ -19,57 +19,24 @@ public final class Main {
      */
     public static void main(String[] args) throws IOException, TwitterException, InterruptedException {
 
-//       getTweetInBD("#GOT","GoTTweetV2.txt","en",15000);
-//       Traduction traducteur = new Traduction("GoTTweetV2.txt");
-//        traducteur.addMotsInutileFiles("motsInutile.txt");
-//        traducteur.getInNumber("FileForApriori/FileForAprioriGoTV2");
-//        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("FileForApriori/FileForAprioriGoTV2","FileAfterApriori/FileAfterAprioriGoTV2",200);
-//        traducteur.getInLetter("FileAfterApriori/FileAfterAprioriGoTV2", "Traduction/FileAfterAprioriGoTV2");
-//        AprioriTraitement aprioriTraitement = new AprioriTraitement("FileAfterApriori/FileAfterAprioriGoTV2", "FileAfterRuleAssos/FileAfterRuleAssoGoTV2", 0.10,"FileForApriori/FileForAprioriGoTV2");
-//        aprioriTraitement.doWithLift("test.txt");
-//        traducteur.getInLetter("test.txt", "Traduction/FileAfterLiftGoTV2");
-//        traducteur.getInLetter("GOTResultApriori.out", "test");
-//        traducteur.getInLetter("RegleAssosiationOutPut.txt","RegleAssosiationOutPut.txtOutput");
+//       getTweetInBD("Macron","MacronV2.txt","fr",50000);
+       Traduction traducteur = new Traduction("MacronV2.txt","motsInutile.txt");
+
+//        traducteur.getInNumber("FileForApriori/MacronV2");
+        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("FileForApriori/MacronV2","FileAfterApriori/MacronV2",150);
+        traducteur.getInLetter("FileAfterApriori/MacronV2", "Traduction/MacronAfterAprioriV2");
+        AprioriTraitement aprioriTraitement = new AprioriTraitement("FileAfterApriori/MacronV2", "FileAfterRuleAssos/MacronV2", 0.001,"FileForApriori/MacronV2");
+        aprioriTraitement.doWithLift("MacronLiftV2.txt");
+
+        traducteur.getInLetter("MacronLiftV2.txt", "Traduction/MacronAfterLiftV2");
+
 
     }
 
 
 
-    public static void convertNumberToText( Map<String, Integer> mapConvert, String source, String output) throws IOException {
-        InputStream flux=new FileInputStream(source);
-        InputStreamReader lecture=new InputStreamReader(flux);
-        BufferedReader buff=new BufferedReader(lecture);
-        String ligne;
-        PrintStream ps = new PrintStream(new FileOutputStream(output));
-        while ((ligne=buff.readLine())!=null) {
-               String value = ligne.substring(ligne.indexOf('(') , ligne.indexOf(')')+1);
-               ligne = ligne.substring(0,ligne.indexOf('('));
-               String newLine ="";
-                String[] parts = ligne.split(" ");
 
 
-                for (String str : parts){
-                    str = str.replace(" ","");
-//                    System.out.println("|" + str + "|");
-                    int strtoInt = 0;
-                    if(!str.equals("")) strtoInt = Integer.parseInt(str);
-                    newLine = newLine + " " + getKey(mapConvert,strtoInt);
-                }
-                newLine = newLine + " " + value;
-            ps.println(newLine);
-
-
-        }
-        buff.close();
-    }
-    static public <K, V> K getKey(Map<K, V> map, V value) {
-        for (Map.Entry<K, V> entry : map.entrySet()) {
-            if (entry.getValue().equals(value)) {
-                return entry.getKey();
-            }
-        }
-        return null;
-    }
     public static String magicCutTextFonction(String text)
     {
         text = text.replace("\n","");
@@ -115,33 +82,6 @@ public final class Main {
 
         }
     }
-    public static Map<Integer,String> transformMap() throws IOException {
-        int index=-1;
-        Map<Integer,String> myMap = new HashMap<Integer, String>();
 
-        String strLine="";
-        String splitStr=";";
 
-        try (FileReader fstream = new FileReader("donne.txt")){
-            BufferedReader br = new BufferedReader(fstream);
-            while ((strLine = br.readLine()) != null)   {
-                String[] tweet= strLine.split(splitStr);
-                for (int i = 1; i < tweet.length - 1 ; i++) {
-                    if (!(isOnMap(tweet[i],myMap))){
-                        myMap.put(++index,tweet[i]);
-                    }
-                }
-            }
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-        return myMap;
-    }
-    public static boolean isOnMap(String elem, Map<Integer, String> myMap){
-        for (Integer key: myMap.keySet()) {
-            if (elem.equals(myMap.get(key)))return true;
-        }
-        return false;
-    }
 }

@@ -9,7 +9,8 @@ public class Traduction {
     private String file;
     private Map<String, Integer> mapConvert = new HashMap<>();
     private List<String> motsInutiles = new ArrayList<>();
-    public Traduction(String file) throws IOException {
+    public Traduction(String file, String s) throws IOException {
+        addMotsInutileFiles(s);
         this.file = file;
 
         InputStream flux=new FileInputStream(file);
@@ -19,7 +20,14 @@ public class Traduction {
 
 
         while ((ligne=buff.readLine())!=null){
-            ligne = ligne.substring(32, ligne.length());
+
+            try{
+                ligne = ligne.substring(32);
+            }
+            catch (java.lang.StringIndexOutOfBoundsException e)
+            {
+                continue;
+            }
             ligne = ligne.replace("\";\""," ");
             ligne = ligne.replace(","," ");
             ligne = ligne.replace("\";"," ");
@@ -37,10 +45,13 @@ public class Traduction {
             for (String str : parts){
 
                 str = str.trim();
+
                 if(str.equals(""))continue;
+                if(motsInutiles.contains(str))continue;
                 if(!mapConvert.containsKey(str)){
                     mapConvert.put(str, mapConvert.size());
                 }
+
             }
 
 
@@ -76,6 +87,7 @@ public class Traduction {
             for (String str : parts){
 
                 str = str.trim();
+
                 if(str.equals(""))continue;
 
                 int strtoInt = 0;
@@ -87,7 +99,7 @@ public class Traduction {
 
                 else
                 {
-                    newLine = newLine + " " + str;
+                    newLine += str + " " ;
                 }
 
             }
@@ -116,8 +128,6 @@ public class Traduction {
         String ligne;
         PrintStream ps = new PrintStream(new FileOutputStream(output));
 
-        Map<String, Integer> MapConvert = new HashMap<>();
-
         int nbLigne = 0;
         BufferedReader reader = new BufferedReader(new FileReader(file));
         while (reader.readLine() != null) nbLigne++;
@@ -130,7 +140,7 @@ public class Traduction {
             {
                 System.out.println("Traduction en cours " + (double)Math.round(((((double)nbLigneLue/nbLigne)*100) * 100) / 100) +"%");
             }
-            ligne = ligne.substring(32, ligne.length());
+            ligne = ligne.substring(32);
             ligne = ligne.replace("\";\""," ");
             ligne = ligne.replace(","," ");
             ligne = ligne.replace("\";"," ");
@@ -148,11 +158,12 @@ public class Traduction {
             for (String str : parts){
                 str = str.trim();
                 if(str.equals(""))continue;
+
                 if(motsInutiles.contains(str))continue;
-                if(!MapConvert.containsKey(str)){
-                        MapConvert.put(str,MapConvert.size());
+                if(!mapConvert.containsKey(str)){
+                    mapConvert.put(str,mapConvert.size());
                 }
-                newLine = newLine + MapConvert.get(str) +" ";
+                newLine = newLine + mapConvert.get(str) +" ";
 
             }
             ps.println(newLine);

@@ -23,7 +23,6 @@ public class LoadFile {
             bufferedReader = new BufferedReader(new FileReader(file));
             String line = bufferedReader.readLine();
             while (line != null) {
-
                 String attr1;
                 String attr2;
                 String freq;
