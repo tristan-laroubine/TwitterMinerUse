@@ -11,8 +11,13 @@ public class AprioriCreateWithFile {
 
     AprioriCreateWithFile(String intput, String output, int minSuppAbsolue) throws IOException {
         PrintStream ps = new PrintStream(new FileOutputStream(output));
-        Double minSuppRelatif = 1.0 * ((double) minSuppAbsolue/15000.0);
-        System.out.println(minSuppRelatif);
+        BufferedReader reader = new BufferedReader(new FileReader(intput));
+        int lines = 0;
+        while (reader.readLine() != null) lines++;
+        reader.close();
+
+        System.out.println("Lancement de l'algorithme Apriori pour " + lines + " tweets  et comme minSuppRelatif " + 1.0 * ((double) minSuppAbsolue / (double) lines));
+        Double minSuppRelatif = 1.0 * ((double) minSuppAbsolue/ (double) lines);
         String ligne;
         InputStream flux=new FileInputStream(intput);
         InputStreamReader lecture=new InputStreamReader(flux);
@@ -28,7 +33,14 @@ public class AprioriCreateWithFile {
 
             for (String str : parts){
                 int nb = 0;
-                if (!str.isEmpty()) nb = Integer.parseInt(str);
+                if (!str.isEmpty()){
+                    try{
+                        nb = Integer.parseInt(str);
+
+                    }catch (java.lang.NumberFormatException e){
+
+                    }
+                }
                 hashMapInteger.add(nb);
             }
             itemsetList.add(hashMapInteger);

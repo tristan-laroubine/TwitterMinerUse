@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import static java.sql.DriverManager.println;
 
@@ -16,18 +17,18 @@ public final class Main {
      *
      * @param args message
      */
-    public static void main(String[] args) throws IOException, TwitterException {
-//       getTweetInBD("#GoT","GoTTweet.txt",15000);
-//         createNumberData("GoTTweet.txt","GoTTweetResult.txt");
+    public static void main(String[] args) throws IOException, TwitterException, InterruptedException {
 
-//        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("GoTTweetResult.txt","FileAfterApriori/FileAfterApriori2",1000);
-//        AprioriTraitement aprioriTraitement = new AprioriTraitement("FileAfterApriori/FileAfterApriori2", "FileAfterRuleAssos/FileAfterRuleAssos2", 0.30);
-
-
-        Traduction traducteur = new Traduction("GoTTweet.txt");
-        traducteur.getInLetter("FileAfterRuleAssos/FileAfterRuleAssos2", "Traduction/FileAfterRule2");
+//       getTweetInBD("#GOT","GoTTweetV2.txt","en",15000);
+//       Traduction traducteur = new Traduction("GoTTweetV2.txt");
+//        traducteur.addMotsInutileFiles("motsInutile.txt");
+//        traducteur.getInNumber("FileForApriori/FileForAprioriGoTV2");
+//        AprioriCreateWithFile aprioriCreateWithFile = new AprioriCreateWithFile("FileForApriori/FileForAprioriGoTV2","FileAfterApriori/FileAfterAprioriGoTV2",200);
+//        traducteur.getInLetter("FileAfterApriori/FileAfterAprioriGoTV2", "Traduction/FileAfterAprioriGoTV2");
+//        AprioriTraitement aprioriTraitement = new AprioriTraitement("FileAfterApriori/FileAfterAprioriGoTV2", "FileAfterRuleAssos/FileAfterRuleAssoGoTV2", 0.10,"FileForApriori/FileForAprioriGoTV2");
+//        aprioriTraitement.doWithLift("test.txt");
+//        traducteur.getInLetter("test.txt", "Traduction/FileAfterLiftGoTV2");
 //        traducteur.getInLetter("GOTResultApriori.out", "test");
-//        traducteur.getInNumber("GoTTweetResult.txt");
 //        traducteur.getInLetter("RegleAssosiationOutPut.txt","RegleAssosiationOutPut.txtOutput");
 
     }
@@ -78,19 +79,34 @@ public final class Main {
         return result;
     }
 
-    public static void getTweetInBD(String arg, String fileDirectory, int nbMaxTweet) throws FileNotFoundException, TwitterException {
+    public static void getTweetInBD(String arg, String fileDirectory, String language, int nbMaxTweet) throws FileNotFoundException, InterruptedException {
         Twitter twitter = TwitterFactory.getSingleton();
-        Query query = new Query(arg);
+        Query query = new Query(arg + " -filter:retweets AND -filter:replies&count=20&result_type=recent ");
+        query.setLang(language);
         query.setCount(100);
         int nombreTweet = 0;
         PrintStream ps = new PrintStream(new FileOutputStream(fileDirectory));
         while(nbMaxTweet>nombreTweet)
         {
-            QueryResult result = twitter.search(query);
+            QueryResult result = null;
+            try {
+                result = twitter.search(query);
+            } catch (TwitterException e) {
+                System.out.println("Attente pour le prochain tweet => " + e.getRateLimitStatus().getSecondsUntilReset() + " secondes....");
+                TimeUnit.SECONDS.sleep(e.getRateLimitStatus().getSecondsUntilReset()+5);
+                try {
+                    result = twitter.search(query);
+                } catch (TwitterException e1) {
+                    e1.printStackTrace();
+                }
+
+
+            }
 
             for (Status status : result.getTweets()) {
                 ps.println("\""+status.getCreatedAt()+"\";\"@"+status.getUser().getScreenName()+"\";" + magicCutTextFonction(status.getText()));;
             }
+
             query = result.nextQuery();
 
             nombreTweet = nombreTweet + 100;

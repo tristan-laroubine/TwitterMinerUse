@@ -14,7 +14,7 @@ public class AprioriTraitement {
     private String output;
     private int nbLigne;
 
-    AprioriTraitement(String file, String output, Double confMin) throws IOException {
+    AprioriTraitement(String file, String output, Double confMin, String fichierOrigin) throws IOException {
         this.file = file;
         InputStream flux=new FileInputStream(this.file);
         this.lecture=new InputStreamReader(flux);
@@ -23,7 +23,10 @@ public class AprioriTraitement {
         this.output = output;
         this.confMin = confMin;
 
-        nbLigne = Integer.parseInt(ligne.substring(ligne.indexOf('(')+1 , ligne.indexOf(')')));
+        BufferedReader buff2 = new BufferedReader(new InputStreamReader(new FileInputStream (fichierOrigin)));
+
+        while (buff2.readLine() != null) nbLigne++;
+
 
         createMinConf();
         calculMinConf();
@@ -82,6 +85,13 @@ public class AprioriTraitement {
     }
 
 
+    public void doWithLift(String output) throws FileNotFoundException {
 
+        PrintStream ps = new PrintStream(new FileOutputStream(output));
+        for (RegleAssociation regleAssociation : regleAssociations)
+        {
+          ps.println(regleAssociation + " (" + regleAssociation.getConfiance() / (regleAssociation.getMyBefore().myOccurence /(double)nbLigne) +')' + '(' + (regleAssociation.getMyAfter().myOccurence /(double)nbLigne)+')' );
 
+        }
+    }
 }

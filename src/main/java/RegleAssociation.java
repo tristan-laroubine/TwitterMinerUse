@@ -10,10 +10,29 @@ public class RegleAssociation {
 
     private Double minConfiance;
 
+    private Double confiance;
+
+    public Double getConfiance() {
+        return confiance;
+    }
+
+    public AproriTuple getMyBefore() {
+        return myBefore;
+    }
+
+    public AproriTuple getMyAfter() {
+        return myAfter;
+    }
+
+    public Double getMinConfiance() {
+        return minConfiance;
+    }
+
     public RegleAssociation(AproriTuple myBefore, AproriTuple myAfter, Double minConfiance) {
         this.myBefore = myBefore;
         this.myAfter = myAfter;
         this.minConfiance = minConfiance;
+        this.confiance = ((double) myAfter.myOccurence / (double) myBefore.myOccurence);
     }
 
 
