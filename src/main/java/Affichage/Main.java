@@ -1,0 +1,69 @@
+package Affichage;
+
+import com.sun.deploy.util.StringUtils;
+import com.sun.rowset.internal.Row;
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main extends Application {
+
+    private final ObservableList<row> data =
+            FXCollections.observableArrayList(
+
+            );
+    public static void main(String[] args) {
+    launch(args);
+}
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+
+
+        LoadFile loadFile = new LoadFile("test.txt");
+        ArrayList<ArrayList<String>> dataNoFilter = loadFile.getDataValuesGlobal();
+        for (ArrayList<String> arrayRow  : dataNoFilter
+             ) {
+                data.add(new row(arrayRow.get(0),
+                        arrayRow.get(1),
+                        Double.parseDouble(arrayRow.get(2))
+                        ,Double.parseDouble(arrayRow.get(3)),
+                        Double.parseDouble(arrayRow.get(4))));
+        }
+
+
+        primaryStage.setTitle("TwitMiner");
+        VBox vBoxStruct = new VBox();
+        vBoxStruct.setSpacing(10);
+        Scene scene=new Scene(vBoxStruct,1000,1000);
+        primaryStage.setScene(scene);
+        Tableau table= new Tableau(primaryStage);
+
+        TextField textMinFreq = new TextField();
+        textMinFreq.setPromptText("minFreq");
+        TextField textMinLift = new TextField();
+        textMinLift.setPromptText("minLift");
+        TextField textMinConf = new TextField();
+        textMinConf.setPromptText("minConf");
+        Button button = new Button("Ok");
+
+
+
+        HBox config = new HBox();
+        config.getChildren().addAll(textMinFreq,textMinLift,textMinConf,button);
+        config.setSpacing(10);
+        table.setItems(data);
+        vBoxStruct.getChildren().addAll(table,config);
+
+        primaryStage.show();
+    }
+}
