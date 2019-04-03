@@ -5,6 +5,8 @@ import com.sun.rowset.internal.Row;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -47,7 +49,7 @@ public class Main extends Application {
         Scene scene=new Scene(vBoxStruct,1000,1000);
         primaryStage.setScene(scene);
         Tableau table= new Tableau(primaryStage);
-
+        table.setPrefHeight(800.0);
         TextField textMinFreq = new TextField();
         textMinFreq.setPromptText("minFreq");
         TextField textMinLift = new TextField();
@@ -55,6 +57,39 @@ public class Main extends Application {
         TextField textMinConf = new TextField();
         textMinConf.setPromptText("minConf");
         Button button = new Button("Ok");
+        button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Double minLift;
+                Double minFreq;
+                Double minConf;
+                if("".equals(textMinConf.getText())) {
+                    minConf = 0.0;
+                }else {
+                    minConf = Double.parseDouble(textMinConf.getText());
+                }
+                if(textMinFreq.getText().equals("")){
+                    minFreq = 0.0;
+                }else {
+                    minFreq = Double.parseDouble(textMinFreq.getText());
+                }
+                if(textMinLift.getText().equals("")){
+                    minLift = 0.0;
+                }else {
+                    minLift = Double.parseDouble(textMinLift.getText());
+                }
+
+
+                for (int i = data.size()-1; i > -1 ; i--) {
+                    if(data.get(i).getLift() < minLift
+                            || data.get(i).getConf() < minConf
+                            || data.get(i).getFreq() < minFreq)
+                        data.remove(data.get(i));
+                }
+                table.setItems(data);
+            }
+        });
+
 
 
 
@@ -62,7 +97,7 @@ public class Main extends Application {
         config.getChildren().addAll(textMinFreq,textMinLift,textMinConf,button);
         config.setSpacing(10);
         table.setItems(data);
-        vBoxStruct.getChildren().addAll(table,config);
+        vBoxStruct.getChildren().addAll(config,table);
 
         primaryStage.show();
     }
