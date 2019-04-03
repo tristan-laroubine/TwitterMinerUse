@@ -44,8 +44,8 @@ public class LoadFile {
                 arrayTemp.add(attr1);
                 arrayTemp.add(attr2);
                 arrayTemp.add(conf);
-                arrayTemp.add(lift);
                 arrayTemp.add(freq);
+                arrayTemp.add(lift);
                 dataValuesGlobal.add(arrayTemp);
 //                System.out.println(arrayTemp + "\n");
                 line = bufferedReader.readLine();
